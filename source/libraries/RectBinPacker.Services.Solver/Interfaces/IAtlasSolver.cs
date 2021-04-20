@@ -14,8 +14,8 @@ namespace RectBinPacker.Services.Solver.Interfaces
         IList<IItem> Items { set; }
         IList<IValidator> Validators { set; }
 
+        IAtlas Solve();
         bool IsConfigured();
 
-        IAtlas Solve();
     }
 }

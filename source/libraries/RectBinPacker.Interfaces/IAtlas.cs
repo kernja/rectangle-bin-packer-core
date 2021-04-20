@@ -8,6 +8,7 @@ namespace RectBinPacker.Interfaces
     {
         public int Width { get; }
         public int Height { get; }
+        public int StepCount { get; }
         public IList<IConfiguredItem> GetConfiguredItems();
     }
 }

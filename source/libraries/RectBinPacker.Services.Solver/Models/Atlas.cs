@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace RectBinPacker.Services.Solver.Models
 {
@@ -9,11 +10,12 @@ namespace RectBinPacker.Services.Solver.Models
     {
         public int Width { get; internal set; }
         public int Height { get; internal set; }
+        public int StepCount { get; internal set; }
         internal IList<ConfiguredItem> ConfiguredItems { get; set; }
 
         public IList<IConfiguredItem> GetConfiguredItems()
         {
-            return (IList<IConfiguredItem>)ConfiguredItems;
+            return ConfiguredItems.Select(ci => (IConfiguredItem)ci).ToList();
         }
 
         internal int Area()

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace RectBinPacker.ConsoleApp
 {
-    public class ValidatorRegistration : IValidatorRegistration
+    public class DefaultValidators : IDefaultValidators
     {
         public IList<IValidator> GetValidators()
         {
@@ -16,6 +16,7 @@ namespace RectBinPacker.ConsoleApp
                 new WidthValidator { Comparison  = ECompareType.GREATERTHAN, Value = 0 },
                 new HeightValidator { Comparison  = ECompareType.GREATERTHAN, Value = 0 },
                 new ItemCountValidator { Comparison  = ECompareType.GREATERTHANEQUALTO, Value = 1 },
+                new StepCountValidator { Comparison  = ECompareType.LESSTHANEQUALTO, Value = 1 },
             };
         }
     }

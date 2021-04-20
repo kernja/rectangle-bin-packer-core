@@ -5,11 +5,15 @@ using System.Collections.Generic;
 namespace RectBinPacker.Validators
 {
     public class ScaleValidator : ComparisonValidator
-    {       
-        public override bool Validate(IList<IConfiguredItem> configuredItems, out string errorMessage)
+    {
+        public override bool Validate(IAtlas atlas, out string parameterName, out string errorMessage)
         {
-            // set our default error message, which is nothing.
+            // set our default string values
             errorMessage = null;
+            parameterName = "Scale";
+
+            // get our items
+            var configuredItems = atlas.GetConfiguredItems();
 
             // iterate through each configured item
             foreach (var ci in configuredItems)

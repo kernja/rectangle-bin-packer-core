@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RectBinPacker.Interfaces
 {
-    public interface IValidatorRegistration
+    public interface IDefaultValidators
     {
         IList<IValidator> GetValidators();
     }

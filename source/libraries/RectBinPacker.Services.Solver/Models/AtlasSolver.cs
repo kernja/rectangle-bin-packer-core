@@ -11,7 +11,6 @@ namespace RectBinPacker.Services.Solver.Models
     {
         public int Width { set; internal get; }
         public int Height { set; internal get; }
-
         public IList<IItem> Items { set; internal get; }
         public IList<IValidator> Validators { set; internal get; }
 
@@ -21,15 +20,16 @@ namespace RectBinPacker.Services.Solver.Models
             if (Items == null)
                 return false;
 
-            // make sure our item list doesn't have any null values
+            // make sure none of our items are null
             if (Items.Any(it => it == null))
                 return false;
 
+            // create an empty validator list
             if (Validators == null)
                 Validators = new List<IValidator>();
 
             // make sure our validator list doesn't contain null values
-            if (Validators.Any(it => it == null))
+            if (Validators.Any(va => va == null))
                 return false;
 
             // return true if the above checks pass
@@ -39,7 +39,7 @@ namespace RectBinPacker.Services.Solver.Models
         public IAtlas Solve()
         {
             if (!IsConfigured())
-                throw new InvalidOperationException("Solver.Solve is not properly configured");
+                throw new InvalidOperationException("AtlasSolver is not properly configured");
             
             // create our atlas
             var atlas = new Atlas
@@ -64,17 +64,17 @@ namespace RectBinPacker.Services.Solver.Models
             foreach (var ci in atlas.ConfiguredItems)
                 ci.Scale = scale;
 
+            // sort from largest to smallest
             atlas.ConfiguredItems = atlas.ConfiguredItems.OrderByDescending(ci => ci.Area()).ToList();
+            
+            // iterate until the atlas is solved
             while (atlas.ConfiguredItems.Any(ci => ci.Placed == false))
             {
-                // if the sum of the configured item area is bigger than
-                // the sum of the atlas area, start shrinking down items
-                /*if ()
-                {
-                    atlas.ConfiguredItems = atlas.ConfiguredItems.OrderByDescending(ci => ci.Area()).ToList();
-                    atlas.ConfiguredItems.Where(ci => ci.Placed == false).FirstOrDefault().Scale += -.05f;
-                    continue;
-                }*/
+                // iterate our step count
+                atlas.StepCount += 1;
+
+                // ensure that we currently pass validation
+                Validate(atlas, Validators);
 
                 // go through canvas, vertically then horizontally
                 for (int iY = 0; iY < atlas.Height - 1; iY++)
@@ -121,7 +121,27 @@ namespace RectBinPacker.Services.Solver.Models
                 }
             }
 
+            // ensure that we pass validation one last time
+            Validate(atlas, Validators);
+
+            // return
             return atlas;
+        }
+
+        private bool Validate(Atlas atlas, IList<IValidator> validators)
+        {
+            foreach (var v in validators)
+            {
+                string errorMessage;
+                string parameterName;
+
+                if (!v.Validate(atlas, out parameterName, out errorMessage))
+                {
+                    throw new ArgumentOutOfRangeException(parameterName, errorMessage);
+                }
+            }
+
+            return true;
         }
     }
 }

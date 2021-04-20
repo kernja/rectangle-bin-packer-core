@@ -13,10 +13,5 @@ namespace RectBinPacker.Interfaces
         public decimal Scale { get; }
         public IItem OriginalItem { get; }
 
-        /*
-        public bool Placed { get; set; }
-        public int GetArea();
-        public bool OccupiesLocation(int X, int Y);*/
-
     }
 }

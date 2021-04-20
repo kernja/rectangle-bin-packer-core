@@ -20,7 +20,7 @@ namespace RectBinPacker.ConsoleApp_
             // configure our dependency injection
             var serviceProvider = new ServiceCollection()
                 .AddLogging()
-                .AddScoped<IValidatorRegistration, ValidatorRegistration>()
+                .AddScoped<IDefaultValidators, DefaultValidators>()
                 .AddScoped<ISolverService, SolverService>()
                 .BuildServiceProvider();
 
@@ -28,7 +28,7 @@ namespace RectBinPacker.ConsoleApp_
             var solverService = serviceProvider.GetService<ISolverService>();
 
             // run our solver
-            var atlas = solverService.Solve(128, 128, new List<IItem>
+            var atlas = solverService.Solve(256, 256, new List<IItem>
             {
                 new Item { Width = 64, Height = 32 },
                 new Item { Width = 64, Height = 128 },
