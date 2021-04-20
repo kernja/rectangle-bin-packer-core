@@ -1,27 +1,68 @@
 ﻿using RectBinPacker.Interfaces;
+using RectBinPacker.Services.Solver.Interfaces;
 using RectBinPacker.Services.Solver.Models;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace RectBinPacker.Services.Solver
+namespace RectBinPacker.Services.Solver.Models
 {
-    public class SolverService : ISolverService
+    internal class Solver : ISolver
     {
-        public IAtlas Solve(int width, int height, IList<IItem> items)
+        private IList<IItem> _items;
+        private IList<ISolverValidator> _validators = new List<ISolverValidator>();
+
+        public void Configure(IList<IItem> items, IList<ISolverValidator> validators = null)
         {
+            _items = items;
+
+            if (validators != null)
+                _validators = validators;
+        }
+
+        public bool IsConfigured()
+        {
+            // make sure our item list isn't null
+            if (_items == null)
+                return false;
+
+            // make sure our item list isn't empty
+            if (_items.Count == 0)
+                return false;
+
+            // make sure our item list doesn't have any null values
+            if (_items.Any(it => it == null))
+                return false;
+
+            // make sure our validator list doesn't contain null values
+            if (_validators.Any(it => it == null))
+                return false;
+
+            // return true if the above checks pass
+            return true;
+        }
+
+        public IAtlas Solve()
+        {
+            if (!IsConfigured())
+                throw new InvalidOperationException("Solver.Solve is not properly configured");
+
+            int width = 256;
+            int height = 256;
+            
             // create our atlas
             var atlas = new Atlas
             {
                 Height = height,
                 Width = width,
-                ConfiguredItems = items.Select(it => new ConfiguredItem { 
+                ConfiguredItems = _items.Select(it => new ConfiguredItem
+                {
                     Scale = 1,
-                    OriginalItem = it 
+                    OriginalItem = it
                 }).ToList()
             };
 
-            float scale = (float)atlas.Area() / atlas.ConfiguredItems.Sum(ci => ci.Area());
+            decimal scale = (decimal)atlas.Area() / atlas.ConfiguredItems.Sum(ci => ci.Area());
             if (scale > 1)
             {
                 scale = 1;

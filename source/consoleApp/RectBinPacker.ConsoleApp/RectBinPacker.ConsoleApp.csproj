@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RectBinPacker.Services.Solver\RectBinPacker.Services.Solver.csproj" />
+    <ProjectReference Include="..\..\libraries\RectBinPacker.Services.Solver\RectBinPacker.Services.Solver.csproj" />
   </ItemGroup>
 
 </Project>

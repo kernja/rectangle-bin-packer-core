@@ -15,17 +15,17 @@ namespace RectBinPacker.Services.Solver.Models
         {
             get
             {
-                return (int)((float)OriginalItem.Width * Scale);
+                return (int)((decimal)OriginalItem.Width * Scale);
             }
         }
         public int Height
         {
             get
             {
-                return (int)((float)OriginalItem.Height * Scale);
+                return (int)((decimal)OriginalItem.Height * Scale);
             }
         }
-        public float Scale { get; internal set; }
+        public decimal Scale { get; internal set; }
         public IItem OriginalItem { get; internal set; }
         #endregion
 

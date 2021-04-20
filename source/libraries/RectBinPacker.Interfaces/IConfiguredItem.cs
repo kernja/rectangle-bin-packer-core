@@ -10,7 +10,7 @@ namespace RectBinPacker.Interfaces
         public int Y { get; }
         public int Width { get; }
         public int Height { get; }
-        public float Scale { get; }
+        public decimal Scale { get; }
         public IItem OriginalItem { get; }
 
         /*
