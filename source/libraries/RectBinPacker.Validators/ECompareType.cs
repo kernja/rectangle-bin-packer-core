@@ -13,9 +13,4 @@ namespace RectBinPacker.Validators
         GREATERTHAN,
         GREATERTHANEQUALTO
     }
-
-    public interface IScaleValidator
-    {
-        void Configure(ECompareType comparison, decimal value);
-    }
 }

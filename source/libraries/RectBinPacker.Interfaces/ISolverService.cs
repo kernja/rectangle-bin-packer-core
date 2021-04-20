@@ -6,8 +6,7 @@ namespace RectBinPacker.Interfaces
 {
     public interface ISolverService
     {
-        ISolver CreateSolver();
-
-        ISolver CreateSolver(IList<IItem> items, IList<ISolverValidator> validators);
+        bool IsConfigured();
+        IAtlas Solve(IList<IItem> items, IList<IValidator> validators);
     }
 }

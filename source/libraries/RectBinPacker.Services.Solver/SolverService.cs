@@ -8,12 +8,12 @@ namespace RectBinPacker.Services.Solver
 {
     public class SolverService : ISolverService
     {
-        public ISolver CreateSolver()
+        public bool IsConfigured()
         {
-            return new Solver();
+            throw new NotImplementedException();
         }
 
-        public ISolver CreateSolver(IList<IItem> items, IList<ISolverValidator> validators)
+        public IAtlas Solve(IList<IItem> items, IList<IValidator> validators)
         {
             throw new NotImplementedException();
         }

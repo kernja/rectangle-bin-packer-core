@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RectBinPacker.Interfaces
 {
-    public interface ISolverValidator
+    public interface IValidator
     {
         bool Validate(IList<IConfiguredItem> configuredItems, out string errorMessage);
     }

@@ -1,11 +1,12 @@
 ﻿using RectBinPacker.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace RectBinPacker.Validators
 {
-    public class ScaleValidator : ComparisonValidator
-    {       
+    public class WidthValidator : ComparisonValidator
+    {
         public override bool Validate(IList<IConfiguredItem> configuredItems, out string errorMessage)
         {
             // set our default error message, which is nothing.
@@ -15,9 +16,9 @@ namespace RectBinPacker.Validators
             foreach (var ci in configuredItems)
             {
                 // get the scale of the configured item, and round it.
-                var ciRoundedScale = Decimal.Round(ci.Scale, ConstRoundTo);
+                var ciRoundedScale = Decimal.Round(ci.Width, ConstRoundTo);
 
-                if (!base.Validate(ciRoundedScale, "ScaleValidator", out errorMessage))
+                if (!base.Validate(ciRoundedScale, "WidthValidator", out errorMessage))
                     return false;
             }
 

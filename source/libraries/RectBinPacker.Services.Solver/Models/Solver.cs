@@ -10,9 +10,9 @@ namespace RectBinPacker.Services.Solver.Models
     internal class Solver : ISolver
     {
         private IList<IItem> _items;
-        private IList<ISolverValidator> _validators = new List<ISolverValidator>();
+        private IList<IValidator> _validators = new List<IValidator>();
 
-        public void Configure(IList<IItem> items, IList<ISolverValidator> validators = null)
+        public void Configure(IList<IItem> items, IList<IValidator> validators = null)
         {
             _items = items;
 
@@ -24,10 +24,6 @@ namespace RectBinPacker.Services.Solver.Models
         {
             // make sure our item list isn't null
             if (_items == null)
-                return false;
-
-            // make sure our item list isn't empty
-            if (_items.Count == 0)
                 return false;
 
             // make sure our item list doesn't have any null values
