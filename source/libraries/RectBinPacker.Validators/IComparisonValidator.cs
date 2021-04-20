@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RectBinPacker.Validators
 {
-    public interface IScaleValidator
+    public interface IComparisonValidator
     {
         ECompareType Comparison { get; }
         

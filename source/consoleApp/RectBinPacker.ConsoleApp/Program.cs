@@ -1,4 +1,6 @@
-﻿using RectBinPacker.Interfaces;
+﻿using Microsoft.Extensions.DependencyInjection;
+using RectBinPacker.ConsoleApp;
+using RectBinPacker.Interfaces;
 using RectBinPacker.Services.Solver;
 using System;
 using System.Collections.Generic;
@@ -15,8 +17,17 @@ namespace RectBinPacker.ConsoleApp_
 
         static void Main(string[] args)
         {
+            // configure our dependency injection
+            var serviceProvider = new ServiceCollection()
+                .AddLogging()
+                .AddScoped<IValidatorRegistration, ValidatorRegistration>()
+                .AddScoped<ISolverService, SolverService>()
+                .BuildServiceProvider();
 
-            var solverService = new SolverService();
+            // get our solver service
+            var solverService = serviceProvider.GetService<ISolverService>();
+
+            // run our solver
             var atlas = solverService.Solve(128, 128, new List<IItem>
             {
                 new Item { Width = 64, Height = 32 },
@@ -25,6 +36,8 @@ namespace RectBinPacker.ConsoleApp_
                 new Item { Width = 64, Height = 32 },
                 new Item { Width = 256, Height = 128 }
             });
+
+
             Console.WriteLine("Hello World!");
         }
     }

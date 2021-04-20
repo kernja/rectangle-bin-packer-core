@@ -8,14 +8,21 @@ namespace RectBinPacker.Services.Solver
 {
     public class SolverService : ISolverService
     {
-        public bool IsConfigured()
+        private readonly IValidatorRegistration _validatorRegistration;
+
+        public SolverService(IValidatorRegistration validatorRegistration)
         {
-            throw new NotImplementedException();
+            _validatorRegistration = validatorRegistration;
         }
 
-        public IAtlas Solve(IList<IItem> items, IList<IValidator> validators)
+        public IAtlas Solve(int height, int width, IList<IItem> items, IList<IValidator> validators = null)
         {
-            throw new NotImplementedException();
+            IList<IValidator> validatorsToUse = _validatorRegistration.GetValidators();
+            if (validators != null)
+                validatorsToUse = validators;
+
+            var solver = new AtlasSolver() { Items = items, Validators = validators, Width = width, Height = height };
+            return solver.Solve();
         }
     }
 }
