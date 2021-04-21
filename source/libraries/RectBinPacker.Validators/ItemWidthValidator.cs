@@ -1,16 +1,17 @@
 ﻿using RectBinPacker.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace RectBinPacker.Validators
 {
-    public class ScaleValidator : ComparisonValidator
+    public class ItemWidthValidator : ComparisonValidator
     {
         public override bool Validate(IAtlas atlas, out string parameterName, out string errorMessage)
         {
             // set our default string values
             errorMessage = null;
-            parameterName = "Scale";
+            parameterName = "Width";
 
             // get our items
             var configuredItems = atlas.GetConfiguredItems();
@@ -19,9 +20,9 @@ namespace RectBinPacker.Validators
             foreach (var ci in configuredItems)
             {
                 // get the scale of the configured item, and round it.
-                var ciRoundedScale = Decimal.Round(ci.Scale, ConstRoundTo);
+                var ciRoundedScale = Decimal.Round(ci.Width, ConstRoundTo);
 
-                if (!base.Validate(ciRoundedScale, "ScaleValidator", out errorMessage))
+                if (!base.Validate(ciRoundedScale, "WidthValidator", out errorMessage))
                     return false;
             }
 

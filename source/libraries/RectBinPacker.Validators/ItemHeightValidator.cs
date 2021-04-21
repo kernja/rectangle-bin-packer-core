@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RectBinPacker.Validators
 {
-    public class HeightValidator : ComparisonValidator
+    public class ItemHeightValidator : ComparisonValidator
     {
         public override bool Validate(IAtlas atlas, out string parameterName, out string errorMessage)
         {
