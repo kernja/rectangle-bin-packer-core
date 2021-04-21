@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RectBinPacker.Services.Solver.Models
 {
-    internal class ConfiguredItem : IConfiguredItem
+    internal class ConfiguredItem<T> : IConfiguredItem<T> where T : IItem
     {
 
         #region Interface-defined properties
@@ -26,7 +26,7 @@ namespace RectBinPacker.Services.Solver.Models
             }
         }
         public decimal Scale { get; internal set; }
-        public IItem OriginalItem { get; internal set; }
+        public T OriginalItem { get; internal set; }
         #endregion
 
         #region internal properties
@@ -43,9 +43,9 @@ namespace RectBinPacker.Services.Solver.Models
         }
 
         /// <summary>
-        /// Determines if this object occupy this .
+        /// Determines if this object occupies the coordinates at X,Y.
         /// </summary>
-        /// <returns>True if this item is </returns>
+        /// <returns>True if this item occupies the space, false if not.</returns>
         internal bool OccupiesSpace(int X, int Y)
         {
             // If we're not placed, we cannot occupy space.

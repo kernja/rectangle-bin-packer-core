@@ -7,11 +7,11 @@ using System.Linq;
 
 namespace RectBinPacker.Services.Solver.Models
 {
-    internal class AtlasSolver : IAtlasSolver
+    internal class AtlasSolver<T> : IAtlasSolver<T> where T :IItem
     {
         public int Width { set; internal get; }
         public int Height { set; internal get; }
-        public IList<IItem> Items { set; internal get; }
+        public IList<T> Items { set; internal get; }
         public IList<IValidator> Validators { set; internal get; }
 
         public bool IsConfigured()
@@ -36,17 +36,17 @@ namespace RectBinPacker.Services.Solver.Models
             return true;
         }
 
-        public IAtlas Solve()
+        public IAtlas<T> Solve()
         {
             if (!IsConfigured())
                 throw new InvalidOperationException("AtlasSolver is not properly configured");
             
             // create our atlas
-            var atlas = new Atlas
+            var atlas = new Atlas<T>
             {
                 Height = Height,
                 Width = Width,
-                ConfiguredItems = Items.Select(it => new ConfiguredItem
+                ConfiguredItems = Items.Select(it => new ConfiguredItem<T>
                 {
                     Scale = 1,
                     OriginalItem = it
@@ -128,7 +128,7 @@ namespace RectBinPacker.Services.Solver.Models
             return atlas;
         }
 
-        private bool Validate(Atlas atlas, IList<IValidator> validators)
+        private bool Validate(IAtlas<T> atlas, IList<IValidator> validators) 
         {
             foreach (var v in validators)
             {

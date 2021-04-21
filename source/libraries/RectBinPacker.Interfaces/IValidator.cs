@@ -6,6 +6,6 @@ namespace RectBinPacker.Interfaces
 {
     public interface IValidator
     {
-        bool Validate(IAtlas atlas, out string parameterName, out string errorMessage);
+        bool Validate<T>(IAtlas<T> atlas, out string parameterName, out string errorMessage) where T : IItem;
     }
 }

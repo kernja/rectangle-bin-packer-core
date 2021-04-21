@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using RectBinPacker.ConsoleApp;
+using RectBinPacker.ConsoleApp.Models;
+using RectBinPacker.ConsoleApp.Services;
 using RectBinPacker.Interfaces;
 using RectBinPacker.Services.Solver;
 using System;
@@ -9,12 +11,6 @@ namespace RectBinPacker.ConsoleApp_
 {
     class Program
     {
-        private class Item : IItem
-        {
-            public int Width { get; set; }
-            public int Height { get; set; }
-        }
-
         static void Main(string[] args)
         {
             // configure our dependency injection
@@ -22,23 +18,33 @@ namespace RectBinPacker.ConsoleApp_
                 .AddLogging()
                 .AddScoped<IDefaultValidators, DefaultValidators>()
                 .AddScoped<ISolverService, SolverService>()
+                .AddScoped<IAtlasConsoleOutputService, AtlasConsoleOutputService>()
                 .BuildServiceProvider();
 
             // get our solver service
             var solverService = serviceProvider.GetService<ISolverService>();
 
-            // run our solver
-            var atlas = solverService.Solve(256, 256, new List<IItem>
+            // generate a test atlas to generate
+            var atlas = solverService.Solve(50, 100, new List<TextItem>
             {
-                new Item { Width = 64, Height = 32 },
-                new Item { Width = 64, Height = 128 },
-                new Item { Width = 128, Height = 128 },
-                new Item { Width = 64, Height = 32 },
-                new Item { Width = 256, Height = 128 }
+                new TextItem { Width = 25, Height = 25, Character = 'a' },
+                new TextItem { Width = 25, Height = 50, Character = 'B' },
+                new TextItem { Width = 5, Height = 5, Character = 'c' },
+                new TextItem { Width = 9, Height = 14, Character = 'D' },
+                new TextItem { Width = 25, Height = 3, Character = 'e' }
             });
 
+            // generate our output
+            var outputService = serviceProvider.GetService<IAtlasConsoleOutputService>();
+            var output = outputService.GenerateConsoleOutput<TextItem>(atlas);
 
-            Console.WriteLine("Hello World!");
+            // print it to screen
+            foreach (var line in output)
+                Console.WriteLine(line);
+
+            Console.WriteLine("");
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadLine();
         }
     }
 }

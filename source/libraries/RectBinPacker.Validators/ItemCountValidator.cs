@@ -7,7 +7,7 @@ namespace RectBinPacker.Validators
 {
     public class ItemCountValidator : ComparisonValidator
     {
-        public override bool Validate(IAtlas atlas, out string parameterName, out string errorMessage)
+        public override bool Validate<T>(IAtlas<T> atlas, out string parameterName, out string errorMessage)
         {
             // set our default string values
             errorMessage = null;

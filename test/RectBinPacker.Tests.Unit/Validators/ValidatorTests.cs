@@ -17,7 +17,7 @@ namespace RectBinPacker.Tests.Unit.Validators
         GREATERTHAN,
         GREATERTHANEQUALTO
         */
-        private IAtlas CreateMockAtlas(int stepCount, int atlasWidth, int atlasHeight, int itemWidth, int itemHeight, int itemCount, int ciScale)
+        private IAtlas<IItem> CreateMockAtlas(int stepCount, int atlasWidth, int atlasHeight, int itemWidth, int itemHeight, int itemCount, int ciScale)
         {
             // configure our item
             var moqItem = new Mock<IItem>();
@@ -25,21 +25,21 @@ namespace RectBinPacker.Tests.Unit.Validators
             moqItem.Setup(it => it.Height).Returns(itemHeight);
 
             // configure our CI
-            var moqCI = new Mock<IConfiguredItem>();
+            var moqCI = new Mock<IConfiguredItem<IItem>>();
             moqCI.Setup(ci => ci.Width).Returns(itemWidth);
             moqCI.Setup(ci => ci.Height).Returns(itemHeight);
             moqCI.Setup(ci => ci.Scale).Returns(ciScale);
             moqCI.Setup(ci => ci.OriginalItem).Returns(moqItem.Object);
 
             // create our child list
-            IList<IConfiguredItem> configuredItems = new List<IConfiguredItem>();
+            IList<IConfiguredItem<IItem>> configuredItems = new List<IConfiguredItem<IItem>>();
             for (int i = 0; i < itemCount; i++)
             {
                 configuredItems.Add(moqCI.Object);
             }
 
             // configure our atlas
-            var moqAtlas = new Mock<IAtlas>();
+            var moqAtlas = new Mock<IAtlas<IItem>>();
             moqAtlas.Setup(at => at.StepCount).Returns(stepCount);
             moqAtlas.Setup(at => at.Width).Returns(atlasWidth);
             moqAtlas.Setup(at => at.Height).Returns(atlasHeight);

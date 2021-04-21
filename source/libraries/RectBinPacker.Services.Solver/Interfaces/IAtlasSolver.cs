@@ -5,16 +5,16 @@ using System.Text;
 
 namespace RectBinPacker.Services.Solver.Interfaces
 {
-    internal interface IAtlasSolver
+    internal interface IAtlasSolver<T> where T : IItem
     {
         int Width { set; }
 
         int Height { set; }
 
-        IList<IItem> Items { set; }
+        IList<T> Items { set; }
         IList<IValidator> Validators { set; }
 
-        IAtlas Solve();
+        IAtlas<T> Solve();
         bool IsConfigured();
 
     }

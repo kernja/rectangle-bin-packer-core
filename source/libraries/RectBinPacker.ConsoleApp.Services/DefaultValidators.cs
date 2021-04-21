@@ -1,10 +1,8 @@
 ﻿using RectBinPacker.Interfaces;
 using RectBinPacker.Validators;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace RectBinPacker.ConsoleApp
+namespace RectBinPacker.ConsoleApp.Services
 {
     public class DefaultValidators : IDefaultValidators
     {

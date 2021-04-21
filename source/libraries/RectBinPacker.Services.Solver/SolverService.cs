@@ -15,7 +15,7 @@ namespace RectBinPacker.Services.Solver
             _validatorRegistration = validatorRegistration;
         }
 
-        public IAtlas Solve(int height, int width, IList<IItem> items, IList<IValidator> validators = null)
+        public IAtlas<T> Solve<T>(int height, int width, IList<T> items, IList<IValidator> validators = null) where T : IItem
         {
             // generate the validators we should use
             IList<IValidator> validatorsToUse = _validatorRegistration.GetValidators();
@@ -23,7 +23,7 @@ namespace RectBinPacker.Services.Solver
                 validatorsToUse = validators;
 
             // run the solver
-            var solver = new AtlasSolver() { Items = items, Validators = validatorsToUse, Width = width, Height = height };
+            var solver = new AtlasSolver<T>() { Items = items, Validators = validatorsToUse, Width = width, Height = height };
             return solver.Solve();
         }
     }

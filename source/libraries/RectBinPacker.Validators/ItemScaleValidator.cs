@@ -6,7 +6,7 @@ namespace RectBinPacker.Validators
 {
     public class ItemScaleValidator : ComparisonValidator
     {
-        public override bool Validate(IAtlas atlas, out string parameterName, out string errorMessage)
+        public override bool Validate<T>(IAtlas<T> atlas, out string parameterName, out string errorMessage)
         {
             // set our default string values
             errorMessage = null;
@@ -21,7 +21,7 @@ namespace RectBinPacker.Validators
                 // get the scale of the configured item, and round it.
                 var ciRoundedScale = Decimal.Round(ci.Scale, ConstRoundTo);
 
-                if (!base.Validate(ciRoundedScale, "ScaleValidator", out errorMessage))
+                if (!base.Validate(ciRoundedScale, "ItemScaleValidator", out errorMessage))
                     return false;
             }
 

@@ -22,7 +22,7 @@ namespace RectBinPacker.Validators
         }
         public ECompareType Comparison { get; set; } = ECompareType.EQUAL;
 
-        public abstract bool Validate(IAtlas atlas, out string parameterName, out string errorMessage);
+        public abstract bool Validate<T>(IAtlas<T> atlas, out string parameterName, out string errorMessage) where T : IItem;
 
         protected bool Validate(decimal ciRoundedValue, string validatorName, out string errorMessage)
         {

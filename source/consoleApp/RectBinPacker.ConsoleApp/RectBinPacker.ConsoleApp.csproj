@@ -12,6 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\libraries\RectBinPacker.ConsoleApp.Models\RectBinPacker.ConsoleApp.Models.csproj" />
+    <ProjectReference Include="..\..\libraries\RectBinPacker.ConsoleApp.Services\RectBinPacker.ConsoleApp.Services.csproj" />
     <ProjectReference Include="..\..\libraries\RectBinPacker.Services.Solver\RectBinPacker.Services.Solver.csproj" />
     <ProjectReference Include="..\..\libraries\RectBinPacker.Validators\RectBinPacker.Validators.csproj" />
   </ItemGroup>
