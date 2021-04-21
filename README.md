@@ -14,7 +14,7 @@ Rewritten in C# and .Net Core 3.1, `Rectangle Bin Packer Core` utilizes dependen
     * `RectBinPacker.ConsoleApp`
         * Runs the algorithm with text-based models and displays output to the console.
     * `RectBinPacker.ConsoleApp.Models`
-        * Services exclusively utilized by the `RectBinPacker.ConsoleApp`
+        * Models exclusively utilized by the `RectBinPacker.ConsoleApp`
     * `RectBinPacker.ConsoleApp.Models`
         * Services exclusively utilized by the `RectBinPacker.ConsoleApp`
 * desktopApp
