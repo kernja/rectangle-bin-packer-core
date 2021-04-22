@@ -4,7 +4,9 @@
 
 Rewritten in C# and .Net Core 3.1, `Rectangle Bin Packer Core` utilizes dependency injection with a service-oriented architecture to pack objects into a two-dimensional atlas. The utilization of interfaces and generic types means that the algorithm can be utilized outside of image processing, and custom validators can be utilized to restrict algorithm output.
 
-![Screenshot of the console project outputting a 50x50 atlas](.docs/consoleAtlas.png)
+![Screenshot of the console project outputting a 50x50 character atlas](.docs/consoleAtlas.png)
+
+![Screenshot of the desktop project outputting a 512x512 pixel atlas](.docs/desktopAtlas.png)
 
 ## Solution
 
@@ -19,13 +21,16 @@ Rewritten in C# and .Net Core 3.1, `Rectangle Bin Packer Core` utilizes dependen
         * Services exclusively utilized by the `RectBinPacker.ConsoleApp`
 * desktopApp
     * `RectBinPacker.DesktopApp`
-        * Work TBD. Currently nothing.
-        * Project will closely resemble the user interface within the original [`Greedy Rectangle Bin Packer`](https://github.com/kernja/Greedy-Rectangle-Bin-Packer).
+        * Runs the algorithm with image-based models within a WinForms app, and displays the output to a picture box.
+    * `RectBinPacker.DesktopApp.Adapters`
+        * Model conversion adapters exclusively utilized by the `RectBinPacker.DesktopApp`
+    * `RectBinPacker.DesktopApp.Models`
+        * Models exclusively utilized by the `RectBinPacker.DesktopApp`
+    * `RectBinPacker.DesktopApp.Services`
+        * Services exclusively utilized by the `RectBinPacker.DesktopApp`
 * libraries
     * `RectBinPacker.Interfaces`
         * Defines interfaces for the bin packer solver service and child objects.
-    * `RectBinPacker.Models`
-         * Work TBD. Currently nothing.
     * `RectBinPacker.Models.Images`
         * Work TBD. Currently nothing.
         * Needs to be moved to the `desktopApp` folder and renamed to `RectBinPacker.DesktopApp.Models`. Will be exclusively utilized by the desktop app.
@@ -38,6 +43,10 @@ Rewritten in C# and .Net Core 3.1, `Rectangle Bin Packer Core` utilizes dependen
         * Work TBD. Currently nothing.
     * `RectBinPacker.Tests.Unit`
         * Unit tests for the entire project. Currently has proof-of-concept tests for `RectBinPacker.Validators`     
+
+## Sample Assets
+
+The repo includes six sample pictures that can be utilized for test data.
 
 ## Libraries and Frameworks
 
