@@ -39,9 +39,11 @@ namespace RectBinPacker.DesktopApp
             // 
             // pictureBox
             // 
+            this.pictureBox.BackColor = System.Drawing.Color.White;
             this.pictureBox.Location = new System.Drawing.Point(12, 12);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(484, 426);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
             // 
@@ -53,6 +55,7 @@ namespace RectBinPacker.DesktopApp
             this.lstItems.Name = "lstItems";
             this.lstItems.Size = new System.Drawing.Size(286, 244);
             this.lstItems.TabIndex = 1;
+            this.lstItems.SelectedIndexChanged += new System.EventHandler(this.lstItems_SelectedIndexChanged);
             // 
             // btnAdd
             // 
@@ -72,6 +75,7 @@ namespace RectBinPacker.DesktopApp
             this.btnRemove.TabIndex = 3;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnSolve
             // 
@@ -81,6 +85,7 @@ namespace RectBinPacker.DesktopApp
             this.btnSolve.TabIndex = 4;
             this.btnSolve.Text = "Solve";
             this.btnSolve.UseVisualStyleBackColor = true;
+            this.btnSolve.Click += new System.EventHandler(this.btnSolve_Click);
             // 
             // frmMain
             // 

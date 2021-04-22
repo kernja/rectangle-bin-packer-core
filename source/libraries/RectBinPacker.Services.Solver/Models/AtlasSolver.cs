@@ -53,6 +53,9 @@ namespace RectBinPacker.Services.Solver.Models
                 }).ToList()
             };
 
+            // ensure that we currently pass validation
+            Validate(atlas, Validators);
+
             // determine our initial scale
             decimal scale = (decimal)atlas.Area() / atlas.ConfiguredItems.Sum(ci => ci.Area());
             if (scale > 1)
@@ -63,6 +66,9 @@ namespace RectBinPacker.Services.Solver.Models
             // set our initial scale
             foreach (var ci in atlas.ConfiguredItems)
                 ci.Scale = scale;
+
+            // ensure that we currently pass validation
+            Validate(atlas, Validators);
 
             // sort from largest to smallest
             atlas.ConfiguredItems = atlas.ConfiguredItems.OrderByDescending(ci => ci.Area()).ToList();

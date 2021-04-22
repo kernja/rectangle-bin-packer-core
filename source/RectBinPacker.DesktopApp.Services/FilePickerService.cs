@@ -19,8 +19,7 @@ namespace RectBinPacker.DesktopApp.Services
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     fileName = dialog.SafeFileName;
-                    filePath = Path.GetDirectoryName(fileName);
-                    
+                    filePath = dialog.FileName;
                     return true;
                 }
 

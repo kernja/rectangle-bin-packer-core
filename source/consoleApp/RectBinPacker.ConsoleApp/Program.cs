@@ -17,8 +17,8 @@ namespace RectBinPacker.ConsoleApp_
             var serviceProvider = new ServiceCollection()
                 .AddLogging()
                 .AddScoped<IDefaultValidators, DefaultValidators>()
-                .AddScoped<ISolverService, SolverService>()
                 .AddScoped<IAtlasConsoleOutputService, AtlasConsoleOutputService>()
+                .AddTransient<ISolverService, SolverService>()
                 .BuildServiceProvider();
 
             // get our solver service

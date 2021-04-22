@@ -1,4 +1,5 @@
-﻿using RectBinPacker.DesktopApp.Services;
+﻿using RectBinPacker.DesktopApp.Models;
+using RectBinPacker.DesktopApp.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,12 +14,12 @@ namespace RectBinPacker.DesktopApp
 {
     public partial class frmMain : Form, IFrmMain
     {
-        private readonly IFilePickerService _filePickerService;
-        public frmMain(IFilePickerService filePickerService)
+        private readonly IAppService _appService;
+        public frmMain(IAppService appService)
         {
             InitializeComponent();
 
-            _filePickerService = filePickerService;
+            _appService = appService;
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -28,13 +29,49 @@ namespace RectBinPacker.DesktopApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string path;
-            string filename;
-
-            if (_filePickerService.SelectFile("Select file...", "PNG Files|*.png", out path, out filename))
+            string exceptionMessage;
+ 
+            if (_appService.AddImage(out exceptionMessage))
             {
-                var foo = 1;
+                RefreshUI();
             }
+            else 
+            {
+                if (!string.IsNullOrWhiteSpace(exceptionMessage))
+                    MessageBox.Show(exceptionMessage);
+            }
+        }
+
+        private void lstItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstItems.SelectedItem != null)
+            {
+                pictureBox.Image = ((ImageListItem)lstItems.SelectedItem).Image;
+            }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (lstItems.SelectedItem != null)
+            {
+                _appService.RemoveImageListItem((ImageListItem)lstItems.SelectedItem);
+                RefreshUI();
+            }
+        }
+
+        private void RefreshUI()
+        {
+            lstItems.DataSource = null;
+            lstItems.DataSource = _appService.GetImageListItems();
+            lstItems.Refresh();
+            lstItems.Update();
+            lstItems.SelectedItem = null;
+            pictureBox.Image = null;
+        }
+
+        private void btnSolve_Click(object sender, EventArgs e)
+        {
+            pictureBox.Image = _appService.Solve();
         }
     }
 }

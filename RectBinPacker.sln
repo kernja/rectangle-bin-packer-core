@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectBinPacker.Tests.Integra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectBinPacker.Interfaces", "source\libraries\RectBinPacker.Interfaces\RectBinPacker.Interfaces.csproj", "{D672C4CA-CA9B-49A3-9B97-BC7AE644960C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectBinPacker.Models", "source\libraries\RectBinPacker.Models\RectBinPacker.Models.csproj", "{77112C87-5045-422A-890A-2909A87D9A03}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectBinPacker.DesktopApp.Models", "source\desktopApp\RectBinPacker.DesktopApp.Models\RectBinPacker.DesktopApp.Models.csproj", "{F6D74450-5300-4A85-BCAF-28C17541E40E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectBinPacker.Services.Solver", "source\libraries\RectBinPacker.Services.Solver\RectBinPacker.Services.Solver.csproj", "{25F3ABFF-65AE-4991-B778-232AF05BA89F}"
@@ -33,9 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectBinPacker.ConsoleApp.Mo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectBinPacker.ConsoleApp.Services", "source\libraries\RectBinPacker.ConsoleApp.Services\RectBinPacker.ConsoleApp.Services.csproj", "{491ED195-8F1C-4339-B01A-C03D72A6B1C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RectBinPacker.DesktopApp.Services", "source\RectBinPacker.DesktopApp.Services\RectBinPacker.DesktopApp.Services.csproj", "{5F65BE8A-5534-44C8-A71A-359D2FE32CBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectBinPacker.DesktopApp.Services", "source\RectBinPacker.DesktopApp.Services\RectBinPacker.DesktopApp.Services.csproj", "{5F65BE8A-5534-44C8-A71A-359D2FE32CBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RectBinPacker.DesktopApp.Adapters", "source\RectBinPacker.DesktopApp.Adapters\RectBinPacker.DesktopApp.Adapters.csproj", "{07FC27AF-036F-40ED-8420-5FCD4F4C1823}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectBinPacker.DesktopApp.Adapters", "source\RectBinPacker.DesktopApp.Adapters\RectBinPacker.DesktopApp.Adapters.csproj", "{07FC27AF-036F-40ED-8420-5FCD4F4C1823}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,10 +61,6 @@ Global
 		{D672C4CA-CA9B-49A3-9B97-BC7AE644960C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D672C4CA-CA9B-49A3-9B97-BC7AE644960C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D672C4CA-CA9B-49A3-9B97-BC7AE644960C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{77112C87-5045-422A-890A-2909A87D9A03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77112C87-5045-422A-890A-2909A87D9A03}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77112C87-5045-422A-890A-2909A87D9A03}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77112C87-5045-422A-890A-2909A87D9A03}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F6D74450-5300-4A85-BCAF-28C17541E40E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F6D74450-5300-4A85-BCAF-28C17541E40E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6D74450-5300-4A85-BCAF-28C17541E40E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -105,7 +99,6 @@ Global
 		{4F3E3AD4-06DC-4796-BC8B-C43E270FFFD7} = {9A97E8CA-D837-4122-B5B4-0D02CA442D0F}
 		{1CC1FB96-0178-46D7-85D8-0F19284540FA} = {9A97E8CA-D837-4122-B5B4-0D02CA442D0F}
 		{D672C4CA-CA9B-49A3-9B97-BC7AE644960C} = {649DFB70-E820-4B4B-AAB0-D8DBD7B261DF}
-		{77112C87-5045-422A-890A-2909A87D9A03} = {649DFB70-E820-4B4B-AAB0-D8DBD7B261DF}
 		{F6D74450-5300-4A85-BCAF-28C17541E40E} = {0E01DAFC-B54E-42EF-909E-1AD0507D1EFE}
 		{25F3ABFF-65AE-4991-B778-232AF05BA89F} = {649DFB70-E820-4B4B-AAB0-D8DBD7B261DF}
 		{3545862E-A9D1-4904-AD6A-D159417DB4AC} = {649DFB70-E820-4B4B-AAB0-D8DBD7B261DF}

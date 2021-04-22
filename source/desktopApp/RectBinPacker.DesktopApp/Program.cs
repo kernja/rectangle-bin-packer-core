@@ -27,7 +27,10 @@ namespace RectBinPacker.DesktopApp
                 .AddScoped<IFilePickerService, FilePickerService>()
                 .AddScoped<IDefaultValidators, DefaultValidators>()
                 .AddScoped<ISolverService, SolverService>()
-                .AddScoped<IFrmMain, frmMain>()
+                .AddScoped<IImageLoaderService, ImageLoaderService>()
+                .AddTransient<IFrmMain, frmMain>()
+                .AddTransient<IAppService, AppService>()
+                .AddTransient<IImageDrawerService, ImageDrawerService>()
                 .BuildServiceProvider();
 
             using (serviceProvider)
