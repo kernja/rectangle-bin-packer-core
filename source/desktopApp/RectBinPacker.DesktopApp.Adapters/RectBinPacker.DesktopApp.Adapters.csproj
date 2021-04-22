@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\desktopApp\RectBinPacker.DesktopApp.Models\RectBinPacker.DesktopApp.Models.csproj" />
+    <ProjectReference Include="..\RectBinPacker.DesktopApp.Models\RectBinPacker.DesktopApp.Models.csproj" />
   </ItemGroup>
 
 </Project>

@@ -13,9 +13,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\desktopApp\RectBinPacker.DesktopApp.Models\RectBinPacker.DesktopApp.Models.csproj" />
-    <ProjectReference Include="..\libraries\RectBinPacker.Interfaces\RectBinPacker.Interfaces.csproj" />
-    <ProjectReference Include="..\libraries\RectBinPacker.Validators\RectBinPacker.Validators.csproj" />
+    <ProjectReference Include="..\RectBinPacker.DesktopApp.Models\RectBinPacker.DesktopApp.Models.csproj" />
+    <ProjectReference Include="..\..\libraries\RectBinPacker.Interfaces\RectBinPacker.Interfaces.csproj" />
+    <ProjectReference Include="..\..\libraries\RectBinPacker.Validators\RectBinPacker.Validators.csproj" />
     <ProjectReference Include="..\RectBinPacker.DesktopApp.Adapters\RectBinPacker.DesktopApp.Adapters.csproj" />
   </ItemGroup>
 

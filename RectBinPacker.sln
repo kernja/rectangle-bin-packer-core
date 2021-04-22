@@ -27,13 +27,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "consoleApp", "consoleApp", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectBinPacker.Validators", "source\libraries\RectBinPacker.Validators\RectBinPacker.Validators.csproj", "{3545862E-A9D1-4904-AD6A-D159417DB4AC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectBinPacker.ConsoleApp.Models", "source\libraries\RectBinPacker.ConsoleApp.Models\RectBinPacker.ConsoleApp.Models.csproj", "{3ADE7F1D-B0A5-4615-8FB8-26F658EDB9DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectBinPacker.ConsoleApp.Models", "source\consoleApp\RectBinPacker.ConsoleApp.Models\RectBinPacker.ConsoleApp.Models.csproj", "{3ADE7F1D-B0A5-4615-8FB8-26F658EDB9DB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectBinPacker.ConsoleApp.Services", "source\libraries\RectBinPacker.ConsoleApp.Services\RectBinPacker.ConsoleApp.Services.csproj", "{491ED195-8F1C-4339-B01A-C03D72A6B1C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectBinPacker.ConsoleApp.Services", "source\consoleApp\RectBinPacker.ConsoleApp.Services\RectBinPacker.ConsoleApp.Services.csproj", "{491ED195-8F1C-4339-B01A-C03D72A6B1C1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectBinPacker.DesktopApp.Services", "source\RectBinPacker.DesktopApp.Services\RectBinPacker.DesktopApp.Services.csproj", "{5F65BE8A-5534-44C8-A71A-359D2FE32CBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectBinPacker.DesktopApp.Services", "source\desktopApp\RectBinPacker.DesktopApp.Services\RectBinPacker.DesktopApp.Services.csproj", "{5F65BE8A-5534-44C8-A71A-359D2FE32CBE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectBinPacker.DesktopApp.Adapters", "source\RectBinPacker.DesktopApp.Adapters\RectBinPacker.DesktopApp.Adapters.csproj", "{07FC27AF-036F-40ED-8420-5FCD4F4C1823}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectBinPacker.DesktopApp.Adapters", "source\desktopApp\RectBinPacker.DesktopApp.Adapters\RectBinPacker.DesktopApp.Adapters.csproj", "{07FC27AF-036F-40ED-8420-5FCD4F4C1823}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

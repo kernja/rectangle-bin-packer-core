@@ -6,8 +6,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RectBinPacker.ConsoleApp.Models\RectBinPacker.ConsoleApp.Models.csproj" />
-    <ProjectReference Include="..\RectBinPacker.Interfaces\RectBinPacker.Interfaces.csproj" />
-    <ProjectReference Include="..\RectBinPacker.Validators\RectBinPacker.Validators.csproj" />
+    <ProjectReference Include="..\..\libraries\RectBinPacker.Interfaces\RectBinPacker.Interfaces.csproj" />
+    <ProjectReference Include="..\..\libraries\RectBinPacker.Validators\RectBinPacker.Validators.csproj" />
   </ItemGroup>
 
 </Project>

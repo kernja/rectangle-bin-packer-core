@@ -14,8 +14,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\libraries\RectBinPacker.Interfaces\RectBinPacker.Interfaces.csproj" />
     <ProjectReference Include="..\..\libraries\RectBinPacker.Services.Solver\RectBinPacker.Services.Solver.csproj" />
-    <ProjectReference Include="..\..\RectBinPacker.DesktopApp.Adapters\RectBinPacker.DesktopApp.Adapters.csproj" />
-    <ProjectReference Include="..\..\RectBinPacker.DesktopApp.Services\RectBinPacker.DesktopApp.Services.csproj" />
+    <ProjectReference Include="..\RectBinPacker.DesktopApp.Adapters\RectBinPacker.DesktopApp.Adapters.csproj" />
+    <ProjectReference Include="..\RectBinPacker.DesktopApp.Services\RectBinPacker.DesktopApp.Services.csproj" />
   </ItemGroup>
 
 </Project>
