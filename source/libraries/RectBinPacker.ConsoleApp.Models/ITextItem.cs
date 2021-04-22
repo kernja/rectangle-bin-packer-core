@@ -6,6 +6,6 @@ namespace RectBinPacker.ConsoleApp.Models
 {
     public interface ITextItem
     {
-        public char Character { get; set; }
+        char Character { get; set; }
     }
 }

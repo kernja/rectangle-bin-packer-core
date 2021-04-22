@@ -1,9 +1,11 @@
 ﻿using RectBinPacker.Interfaces;
 using System;
 using System.Drawing;
+using System.Runtime.Serialization;
 
-namespace RectBinPacker.Models.Image
+namespace RectBinPacker.DesktopApp.Models
 {
+    [DataContract]
     public class ImageItem : IItem
     {
         public Bitmap Image { get; set; }
