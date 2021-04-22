@@ -31,9 +31,6 @@ Rewritten in C# and .Net Core 3.1, `Rectangle Bin Packer Core` utilizes dependen
 * libraries
     * `RectBinPacker.Interfaces`
         * Defines interfaces for the bin packer solver service and child objects.
-    * `RectBinPacker.Models.Images`
-        * Work TBD. Currently nothing.
-        * Needs to be moved to the `desktopApp` folder and renamed to `RectBinPacker.DesktopApp.Models`. Will be exclusively utilized by the desktop app.
     * `RectBinPacker.Services.Solver`
         * Implementation of the packing algorithm as a service.
     * `RectBinPacker.Validators`
@@ -42,7 +39,7 @@ Rewritten in C# and .Net Core 3.1, `Rectangle Bin Packer Core` utilizes dependen
     * `RectBinPacker.Tests.Integration`
         * Work TBD. Currently nothing.
     * `RectBinPacker.Tests.Unit`
-        * Unit tests for the entire project. Currently has proof-of-concept tests for `RectBinPacker.Validators`     
+        * Currently has tests for `RectBinPacker.Validators`     
 
 ## Sample Assets
 
