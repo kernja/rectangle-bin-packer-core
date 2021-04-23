@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RectBinPacker.Services.Solver.Interfaces
 {
-    internal interface IAtlasSolver<T> where T : IItem
+    public interface IAtlasSolver<T> where T : IItem
     {
         int Width { set; }
 
@@ -15,7 +15,7 @@ namespace RectBinPacker.Services.Solver.Interfaces
         IList<IValidator> Validators { set; }
 
         IAtlas<T> Solve();
+       
         bool IsConfigured();
-
     }
 }

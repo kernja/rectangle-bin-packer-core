@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\RectBinPacker.ConsoleApp.Models\RectBinPacker.ConsoleApp.Models.csproj" />
     <ProjectReference Include="..\..\libraries\RectBinPacker.Interfaces\RectBinPacker.Interfaces.csproj" />
     <ProjectReference Include="..\..\libraries\RectBinPacker.Validators\RectBinPacker.Validators.csproj" />

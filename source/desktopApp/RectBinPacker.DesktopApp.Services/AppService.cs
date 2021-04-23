@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Linq;
+using Microsoft.Extensions.Logging;
 
 namespace RectBinPacker.DesktopApp.Services
 {
@@ -17,7 +18,8 @@ namespace RectBinPacker.DesktopApp.Services
         private readonly IFilePickerService _filePickerService;
         private readonly ISolverService _solverService;
         private readonly IImageDrawerService _imageDrawerService;
-        public AppService(IImageLoaderService imageLoaderService, IImageAdapter imageAdapter, IFilePickerService filePickerService, ISolverService solverService, IImageDrawerService imageDrawerService)
+        private readonly ILogger<IAppService> _logger;
+        public AppService(ILogger<IAppService> logger, IImageLoaderService imageLoaderService, IImageAdapter imageAdapter, IFilePickerService filePickerService, ISolverService solverService, IImageDrawerService imageDrawerService)
         {
             _imageList = new List<ImageListItem>();
             _imageLoaderService = imageLoaderService;
@@ -25,14 +27,17 @@ namespace RectBinPacker.DesktopApp.Services
             _filePickerService = filePickerService;
             _solverService = solverService;
             _imageDrawerService = imageDrawerService;
+            _logger = logger;
         }
 
         public bool AddImage(out string exceptionMessage)
         {
+            _logger.LogTrace("AppService.AddImage() invoked.");
+
             exceptionMessage = null;
             string filePath;
             string fileName;
-
+            bool result = false;
             if (_filePickerService.SelectFile("Select file...", "PNG Files|*.png", out filePath, out fileName))
             {
                 Bitmap bitmap;
@@ -46,28 +51,48 @@ namespace RectBinPacker.DesktopApp.Services
                           Path = filePath
                     });
 
-                    return true;
+                    result = true;
                 }
             }
 
-            return false;
+            result = false;
+            _logger.LogTrace($"AppService.AddImage() finished and returned '{result}'");
+            return result;
         }
 
         public IList<ImageListItem> GetImageListItems()
         {
+            _logger.LogTrace("AppService.GetImageListItems() invoked.");
+            _logger.LogTrace($"AppService.GetImageListItems() finished and returned '{_imageList}'");
             return _imageList;
         }
 
         public bool RemoveImageListItem(ImageListItem item)
         {
+            _logger.LogTrace($"AppService.RemoveImageListItem({item}) invoked.");
+            _logger.LogTrace($"AppService.RemoveImageListItem({item}) finished.");
             return _imageList.Remove(item);
         }
-        public Bitmap Solve()
+        public bool Solve(out Bitmap output)
         {
-            var atlas = _solverService.Solve<ImageItem>(512, 512, _imageList.Select(il => _imageAdapter.Adapt(il)).ToList());
-            var bitmap = _imageDrawerService.DrawAtlas<ImageItem>(atlas);
-            return bitmap;
-        }
+            _logger.LogTrace("AppService.Solve() invoked.");
 
+            IAtlas<ImageItem> atlasOutput = null;
+            var result = _solverService.Solve<ImageItem>(512, 512, 
+                    _imageList.Select(il => _imageAdapter.Adapt(il)).ToList(),
+                    out atlasOutput);
+
+                
+            if (result)
+            {
+                output = _imageDrawerService.DrawAtlas<ImageItem>(atlasOutput);
+            } else
+            {
+                output = null;
+            }
+
+            _logger.LogTrace($"AppService.Solve() finished and returned '{result}'");
+            return result;
+        }
     }
 }

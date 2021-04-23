@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RectBinPacker.Services.Solver.Models
 {
-    internal class ConfiguredItem<T> : IConfiguredItem<T> where T : IItem
+    public sealed class ConfiguredItem<T> : IConfiguredItem<T> where T : IItem
     {
 
         #region Interface-defined properties

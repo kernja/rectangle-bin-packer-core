@@ -71,7 +71,14 @@ namespace RectBinPacker.DesktopApp
 
         private void btnSolve_Click(object sender, EventArgs e)
         {
-            pictureBox.Image = _appService.Solve();
+            Bitmap output;
+            if (_appService.Solve(out output))
+            {
+                pictureBox.Image = output;
+            } else
+            {
+                MessageBox.Show("Unable to generate atlas");
+            }
         }
     }
 }

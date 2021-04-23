@@ -12,6 +12,6 @@ namespace RectBinPacker.DesktopApp.Services
         bool RemoveImageListItem(ImageListItem item);
         IList<ImageListItem> GetImageListItems();
 
-        Bitmap Solve();
+        bool Solve(out Bitmap output);
     }
 }

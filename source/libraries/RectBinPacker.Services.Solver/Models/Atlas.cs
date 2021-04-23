@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace RectBinPacker.Services.Solver.Models
 {
-    public class Atlas<T> : IAtlas<T> where T: IItem
+    public sealed class Atlas<T> : IAtlas<T> where T: IItem
     {
         public int Width { get; internal set; }
         public int Height { get; internal set; }

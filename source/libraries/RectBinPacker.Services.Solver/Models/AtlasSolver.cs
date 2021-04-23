@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace RectBinPacker.Services.Solver.Models
 {
-    internal class AtlasSolver<T> : IAtlasSolver<T> where T :IItem
+    public  class AtlasSolver<T> : IAtlasSolver<T> where T :IItem
     {
         public int Width { set; internal get; }
         public int Height { set; internal get; }

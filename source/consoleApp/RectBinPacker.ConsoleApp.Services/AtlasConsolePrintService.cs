@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using Microsoft.Extensions.Logging;
 
 namespace RectBinPacker.ConsoleApp.Services
 {
@@ -13,10 +14,21 @@ namespace RectBinPacker.ConsoleApp.Services
         private const string ConstStart = "-----GENERATED ATLAS IS BELOW-----";
         private const string ConstEnd = "-----GENERATED ATLAS IS ABOVE-----";
 
+        private readonly ILogger<IAtlasConsoleOutputService> _logger;
+        public AtlasConsoleOutputService(ILogger<IAtlasConsoleOutputService> logger)
+        {
+            _logger = logger;
+        }
+
         public IList<string> GenerateConsoleOutput<T>(IAtlas<T> atlas) where T : ITextItem, IItem
         {
+            _logger.LogTrace($"AtlasConsoleOutputService.GenerateConsoleOutput({atlas}) invoked.");
+            
             if (atlas == null)
+            {
+                _logger.LogTrace($"AtlasConsoleOutputService.GenerateConsoleOutput({atlas}) finished due to a null atlas being passed in.");
                 return new List<string>();
+            }
 
             var outputList = new List<string> { ConstStart };
             var configuredItems = atlas.GetConfiguredItems();
@@ -41,6 +53,8 @@ namespace RectBinPacker.ConsoleApp.Services
                 outputList.Add(outputString);
             }
             outputList.Add(ConstEnd);
+
+            _logger.LogTrace($"AtlasConsoleOutputService.GenerateConsoleOutput({atlas}) finished.");
             return outputList;
         }
     }
