@@ -55,7 +55,6 @@ namespace RectBinPacker.DesktopApp.Services
                 }
             }
 
-            result = false;
             _logger.LogTrace($"AppService.AddImage() finished and returned '{result}'");
             return result;
         }

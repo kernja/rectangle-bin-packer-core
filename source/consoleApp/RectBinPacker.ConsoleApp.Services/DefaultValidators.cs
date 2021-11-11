@@ -10,7 +10,7 @@ namespace RectBinPacker.ConsoleApp.Services
         {
             return new List<IValidator>
             {
-                new ItemScaleValidator { Comparison  = ECompareType.NOTEQUAL, Value = 1 },
+                new ItemScaleValidator { Comparison  = ECompareType.EQUAL, Value = 1 },
                 new ItemWidthValidator { Comparison  = ECompareType.GREATERTHAN, Value = 0 },
                 new ItemHeightValidator { Comparison  = ECompareType.GREATERTHAN, Value = 0 },
                 new ItemCountValidator { Comparison  = ECompareType.GREATERTHANEQUALTO, Value = 1 },
