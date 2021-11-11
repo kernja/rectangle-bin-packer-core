@@ -17,7 +17,7 @@ namespace RectBinPacker.ConsoleApp_
             var serviceProvider = new ServiceCollection()
                 .AddLogging(config =>
                 {
-                    config.ClearProviders().AddConsole().SetMinimumLevel(LogLevel.Trace);
+                    config.ClearProviders().AddConsole();
                 })
                 .AddScoped<IDefaultValidators, DefaultValidators>()
                 .AddScoped<IAtlasConsoleOutputService, AtlasConsoleOutputService>()
